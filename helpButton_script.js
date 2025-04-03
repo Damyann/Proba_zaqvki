@@ -1,4 +1,3 @@
-
 let helpIsOpen = false;
 function initHelpButton() {
   const btn = document.getElementById("helpButton");
@@ -17,9 +16,9 @@ function toggleHelpBalloon() {
   if (!b) return;
   helpIsOpen = !helpIsOpen;
   if (helpIsOpen) {
-    b.classList.add("visible","fadeIn");
+    b.classList.add("visible", "fadeIn");
   } else {
-    b.classList.remove("visible","fadeIn");
+    b.classList.remove("visible", "fadeIn");
   }
   const btn = document.getElementById("helpButton");
   if (btn) btn.style.animation = "none";
@@ -33,4 +32,3 @@ document.addEventListener("click", e => {
     }
   }
 });
-

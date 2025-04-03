@@ -1,0 +1,15 @@
+
+button {
+  padding:12px 20px; font-size:16px; background:#ffcc00; color:black; border:none; cursor:pointer;
+  border-radius:10px; transition:all 0.3s; font-weight:bold;
+  box-shadow:0 4px 15px rgba(255,204,0,0.5);
+}
+button:hover {
+  background:#ff9900; box-shadow:0 4px 20px rgba(255,153,0,0.8); transform:scale(1.07);
+}
+#sendButton {
+  position:absolute; top:500px; right:40px;
+}
+#sendButton:disabled {
+  background:red; box-shadow:0 4px 15px rgba(255,0,0,0.7); cursor:not-allowed;
+}

@@ -1,0 +1,260 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: url('https://img.freepik.com/premium-vector/3d-casino-chip-design-background-luxury-black-background-vector-illustration_29865-5935.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+  position: relative;
+  color: white;
+  padding-top: 150px;
+}
+
+.header {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 0;
+  height: 135px;
+  border-bottom: 4px solid #ffcc00;
+}
+
+.header img {
+  width: auto;
+  height: 105px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#panelsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 10px;
+  gap: 10px;
+  margin-top: -30px;
+}
+
+#namePanel, #calendarPanel, #optionsPanel {
+  background: rgba(0, 0,  0, 0.92);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 30px rgba(255, 204, 0, 0.4);
+  border: 3px solid #ffcc00;
+}
+
+#namePanel {
+  width: 450px;
+  margin: 25px auto;
+  text-align: center;
+}
+
+#calendarPanel {
+  width: 750px;
+  height: 725px;
+  margin-top: 20px;
+  position: relative;
+  left: 0px;
+}
+
+#optionsPanel {
+  width: 200px;
+  margin-top: 20px;
+  position: relative;
+  left: -10px;
+}
+
+#namePanel h2, #calendarPanel h2, #optionsPanel h2 {
+  margin-bottom: 15px;
+  color: #ffcc00;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(255,204,0,0.5);
+}
+
+.name-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.name-input-container input {
+  width: 42%;
+  padding: 12px;
+  font-size: 20px;
+  border: 2px solid #ffcc00;
+  border-radius: 8px;
+  text-align: center;
+  background: rgba(255,255,255,0.98);
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+}
+
+.name-input-container input:focus {
+  border-color: #ff9900;
+  box-shadow: 0 4px 12px rgba(255,153,0,0.6);
+}
+
+#confirmationPanel {
+  position: absolute;
+  top: 145px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  padding: 30px;
+  text-align: center;
+  border-radius: 20px;
+  border: 3px solid #ffcc00;
+  background: linear-gradient(135deg, rgba(240,240,240,0.85), rgba(200,200,200,0.85));
+  box-shadow: 0 6px 30px rgba(0,0,0,0.4);
+  z-index: 1001;
+}
+
+#confirmationPanel button {
+  background: linear-gradient(135deg, #ffcc00, #ffe680);
+  border: 2px solid #000;
+  border-radius: 10px;
+  color: #000;
+  font-weight: bold;
+  padding: 15px 30px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+#confirmationPanel button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(45deg) translate(-100%, -100%);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+}
+
+#confirmationPanel button:hover::after {
+  transform: rotate(45deg) translate(0, 0);
+}
+
+#confirmationPanel button:hover {
+  background: linear-gradient(135deg, #ffd633, #ffcc00);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+.threeColsRow {
+  display: grid;
+  grid-template-columns: 130px 130px 130px 130px;
+  gap: 15px;
+  align-items: center;
+  margin: 8px 0;
+  justify-content: center;
+}
+
+.col1, .col2, .col3, .col4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.col1 {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.dayRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 5px;
+  transform: translateX(-25px); /* ⬅️ изместване наляво */
+}
+
+.day-label {
+  min-width: 90px;
+  text-align: right;
+  font-weight: bold;
+  color: #000;
+  white-space: nowrap;
+}
+
+.selectedValueSquare {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 45px;
+  border-radius: 5px;
+  font-weight: bold;
+  border: 2px solid red;
+  background-color: #f9f9f9;
+  color: red;
+  text-align: center;
+  font-size: 18px;
+  margin-left: 4px;
+}
+
+.label-black {
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.value-red {
+  color: red;
+  font-size: 16px;
+  margin-top: 4px;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+}
+
+.summaryRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  justify-content: center;
+  align-items: start;
+  margin-top: 20px;
+  text-align: center;
+}
+#confirmationMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,192 @@
+.calendar {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 2px; justify-content: center;
+}
+.day {
+  /* Фиксирани размери, за да не се разтяга клетката */
+  width: 95px;
+  height: 105px;
+  box-sizing: border-box;
+  padding: 14px;
+  background: #fff;
+  border: 3px solid #800020;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+  color: black;
+  overflow: hidden;
+}
+
+.day:hover { background: #f6cacb; transform: scale(1.07); }
+.dayNumber { font-size: 16px; font-weight: bold; margin-bottom: 5px; }
+.weekend { background-color: #73c3aa; }
+.selected-value { display: block; margin-top: 5px; font-size: 14px; font-weight: bold; color: red; }
+#greetingHeader { position: relative; top: -10px; text-align: center; }
+#pinnedMonth {
+  position: relative !important; display: inline-block !important; top: -8px !important; left: 50%;
+  transform: translateX(-50%) !important; background: #fff !important; padding: 8px 16px !important;
+  border: 2px solid #ffcc00 !important; border-radius: 8px !important; color: #333 !important;
+  font-size: 18px !important; font-weight: bold !important; box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important; z-index: 9999 !important;
+}
+.pin-icon {
+  position: fixed; top: -24px; left: 50%; width: 28px; height: 28px;
+  background: url('https://cdn-icons-png.flaticon.com/512/889/889668.png') no-repeat center/cover;
+}
+#sendButton { margin-top: 115px; }
+
+.dayCheckbox {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 50px;
+  height: 35px;
+  border-radius: 6px;
+  border: 2px solid #ffcc00;
+  cursor: pointer;
+  position: relative;
+  background: linear-gradient(135deg, #fff9cc 0%, #ffffff 100%);
+  transition: all 0.3s;
+  margin-top: 0px;
+}
+
+.dayCheckbox::after {
+  content: "📌";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: #ffcc00;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.dayCheckbox:hover {
+  border-color: #ff9900;
+  transform: scale(1.05);
+}
+
+.dayCheckbox:checked {
+  border: 2px solid red;
+  background: linear-gradient(135deg, #ffe5e5 0%, #fffafa 100%);
+}
+
+.dayCheckbox:checked::after {
+  content: "✔";
+  color: red;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Стилове за деактивиран радио бутон */
+.dayCheckbox:disabled {
+  border-color: #aaa;
+  background: #ddd;
+  cursor: not-allowed;
+}
+
+.dayCheckbox:disabled::after {
+  content: "✖";
+  color: #888;
+  font-size: 18px;
+  transform: translate(-50%, -50%);
+}
+
+
+#shiftsPanel {
+  margin-top: 20px;
+  background: transparent;
+  border: none; /* или border: none */
+  border-radius: 0;
+  padding: 0;
+}
+
+#shiftsPanel h2 {
+  color: #ffcc00;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 10px rgba(255,204,0,0.5);
+}
+
+#shiftCounter {
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 1px 1px 5px rgba(255,215,0,0.5);
+  color: inherit;
+}
+
+/* Когато total е над 22, този клас задава зеления цвят */
+.total-above {
+  color: #39FF14;
+}
+
+/* По подразбиране без рамка */
+.day select {
+  border: 2px solid black; 
+  outline: none; /* да няма син/черен outline при фокус */
+}
+
+/* Когато е маркирано (радио бутона) → слагаме клас .marked */
+.day select.marked {
+  border: 2px solid red !important; /* !important, за да има предимство над фокус-стилове */
+}
+
+/* Забраняваме системния фокус (черната рамка), ако искаш винаги да е червен */
+.day select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.day select.marked:focus {
+  border: 2px solid red !important;
+  box-shadow: 0 0 3px red;
+}
+
+select {
+  text-align: center;       /* Центрира текста по подразбиране (не всички браузъри го спазват) */
+  text-align-last: center;  /* Специфично свойство, което центрира избраната опция */
+  font-size: 18px; /* За десктоп */
+}
+
+/* Контейнер за оставащата бройка – сходен на pinnedMonth */
+#remainingCountContainer {
+  display: inline-block;
+  position: relative;
+  background: #fff;            /* Бял фон */
+  padding: 8px 16px;           /* Вътрешен падинг */
+  border: 2px solid #ffcc00;   /* Жълта рамка */
+  border-radius: 8px;          /* Закръглени ъгли */
+  color: #333;                 /* Тъмен текст */
+  font-size: 18px;             /* Големина на шрифта */
+  font-weight: bold;           /* Удебелен шрифт */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);  /* Леки сенки */
+  margin-left: 15px;           /* Отстояние от елемента с месеца */
+  z-index: 9999;
+  top: -8px;
+  left: 400px;
+}
+
+#remainingCount {
+  display: inline-block;
+  position: relative;
+  top: 0;
+  font-size: 20px;  
+}
+
+/* Ако числото е 0 – само надписът става червен и премига с по-плавен ефект */
+#remainingCount.zero {
+  color: red;
+  animation: blink 2s ease-in-out infinite;
+}
+
+/* Плавна анимация за мигане */
+@keyframes blink {
+  0%   { opacity: 1; }
+  25%  { opacity: 0.8; }
+  50%  { opacity: 0.5; }
+  75%  { opacity: 0.8; }
+  100% { opacity: 1; }
+}

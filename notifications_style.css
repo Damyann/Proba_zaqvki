@@ -1,0 +1,39 @@
+
+.notification {
+  display: none;
+  position: fixed;
+  top: 450px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #4CAF50, #81C784);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  border: 3px solid #ffcc00;
+  transition: opacity 1s, transform 1s;
+}
+.notification.error {
+  background: linear-gradient(135deg, #330000, #660000, #330000);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translateX(-50%); }
+}
+.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Стилове само за "limit" уведомлението */
+.notification.limitNotification {
+  top: 50px;  /* Задайте желаната позиция */
+  left: 22%;   /* Задайте желаната позиция */
+  transform: translate(-50%, 0);
+}
+

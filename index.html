@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Приложение</title>
+    <!-- Включване на стилове (файловете са в същата директория) -->
+    <link rel="stylesheet" href="main_style.css">
+    <link rel="stylesheet" href="calendar_style.css">
+    <link rel="stylesheet" href="timer_style.css">
+    <link rel="stylesheet" href="notifications_style.css">
+    <link rel="stylesheet" href="userinput_style.css">
+    <link rel="stylesheet" href="options_style.css">
+    <link rel="stylesheet" href="button_style.css">
+    <link rel="stylesheet" href="helpButton_style.css">
+
+    <!-- Конфигурационни данни – зададени статично тук; можеш да ги адаптираш или зареждаш чрез AJAX -->
+    <script>
+      // Примерни стойности – коригирай според нуждите на приложението
+      const timerStart = "2025-04-10T00:00:00.000Z";
+      const timerEnd = "2025-04-30T23:59:59.000Z";
+      const nightOptionsData = ["Опция 1", "Опция 2"];
+      const shiftOptionsData = ["8", "12", "16", "Смесени"];
+      const extraShiftOptionsData = ["Да", "Не"];
+      const limitActive = true;
+      const limitNumber = 3;
+      const calendarShiftsData = [
+        { name: "7", factor: 1 },
+        { name: "15", factor: 1 },
+        { name: "23", factor: 1 },
+        { name: "PH", factor: 0 }
+      ];
+      // Примерен dayStatus – всички дни от 1 до 31 са активни
+      const dayStatus = {
+        1: true, 2: true, 3: true, 4: true, 5: true,
+        6: true, 7: true, 8: true, 9: true, 10: true,
+        11: true, 12: true, 13: true, 14: true, 15: true,
+        16: true, 17: true, 18: true, 19: true, 20: true,
+        21: true, 22: true, 23: true, 24: true, 25: true,
+        26: true, 27: true, 28: true, 29: true, 30: true,
+        31: true
+      };
+    </script>
+  </head>
+  <body onload="initHelpButton()">
+    <!-- Хедър -->
+    <div class="header">
+      <img src="https://win-models.com/build/images/logo-fixed.9b59ea9b.svg" alt="Лого">
+    </div>
+
+    <div id="notification" class="notification">Изпратихте заявката си успешно!</div>
+
+    <!-- Панел за име и email -->
+    <div id="namePanel">
+      <h2>Въведи своето име и email:</h2>
+      <div class="name-input-container">
+        <div class="inputs-container">
+          <input type="text" id="nameInput" placeholder="Пример: Kai">
+          <input type="email" id="emailInput" placeholder="Email">
+        </div>
+        <button onclick="checkUserCredentials()">Продължи</button>
+      </div>
+    </div>
+
+    <!-- Панели за календар и опции -->
+    <div id="panelsContainer" style="display: flex; gap: 20px;">
+      <!-- Календар -->
+      <div id="calendarPanel" style="display:none;">
+        <h2 id="greetingHeader">Здравейте, Kali. Моля, изберете датите...</h2>
+        <div id="pinnedMonth">
+          <span class="pin-icon"></span>
+          <span id="monthLabel"></span>
+        </div>
+        <div id="remainingCountContainer">
+          <span id="remainingCount"></span>
+        </div>
+        <div class="calendar" id="calendar"></div>
+        <button id="sendButton" onclick="saveMarkedValues()" disabled>Изпрати</button>
+      </div>
+
+      <!-- Опции и брояч на смени -->
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <div id="optionsPanel" style="display:none;">
+          <h2>Опции</h2>
+          <div id="nightOptions">
+            <h3>Брой нощни:</h3>
+            <div id="nightOptionsList"></div>
+          </div>
+          <div id="shiftOptions">
+            <h3>Вид смени:</h3>
+            <div id="shiftOptionsList"></div>
+          </div>
+          <div id="extraShiftOptions" style="display:none;">
+            <h3>Екстра смени:</h3>
+            <div id="extraShiftOptionsList"></div>
+          </div>
+        </div>
+        <div id="shiftsPanel" style="display:none;">
+          <h2>Брой смени</h2>
+          <div id="shiftCounter">
+            Shifts: 0<br>Total: 0<br>Нощни: 0<br>Дневни: 0<br>Отпуски: 0
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Потвърждение -->
+    <div id="confirmationPanel" style="display:none;">
+      <div id="confirmationMessage"></div>
+      <button onclick="closeConfirmation()">OK</button>
+    </div>
+
+    <!-- Таймер и помощ -->
+    <div id="timerContainer">
+      <span id="timerDisplay">Оставащо време:<div></div></span>
+    </div>
+    <div id="outsideTimeInfo">Не се опитвай да подаваш заявка извън оказаното време</div>
+    <div id="helpButton" onclick="toggleHelpBalloon()"></div>
+    <div id="helpBalloon"></div>
+
+    <!-- Включване на скриптовете -->
+    <script src="main_script.js"></script>
+    <script src="calendar_script.js"></script>
+    <script src="timer_script.js"></script>
+    <script src="notifications_script.js"></script>
+    <script src="userinput_script.js"></script>
+    <script src="options_script.js"></script>
+    <script src="helpButton_script.html"></script>
+  </body>
+</html>

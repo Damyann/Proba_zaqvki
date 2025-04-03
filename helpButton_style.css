@@ -1,0 +1,23 @@
+
+#helpButton {
+  position: fixed; top: 150px; right: 30px; width: 60px; height: 60px; background: #00BFFF;
+  color: #fff; border: 2px solid #000; border-radius: 50%; font-size: 30px; font-weight: bold;
+  text-align: center; line-height: 56px; cursor: pointer; z-index: 1300;
+  box-shadow: 0 0 10px #1E90FF, 0 0 20px #00BFFF; transition: transform 0.3s, box-shadow 0.3s;
+  animation: pulseEffect 1.5s infinite;
+}
+@keyframes pulseEffect {
+  0% { box-shadow: 0 0 10px #1E90FF, 0 0 20px #00BFFF; }
+  50% { box-shadow: 0 0 20px #1E90FF, 0 0 40px #00BFFF; }
+  100% { box-shadow: 0 0 10px #1E90FF, 0 0 20px #00BFFF; }
+}
+#helpButton:hover { transform: scale(1.1); }
+#helpBalloon {
+  display: none; position: fixed; top: 225px; right: 21px; max-width:300px; padding:15px 20px;
+  background: #F0F8FF; color: #333; font-size:16px; font-weight:600; text-align:left; z-index:1300;
+  border:3px solid #B0E0E6; border-radius:8px; box-shadow:0 0 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s, opacity 0.3s; opacity:0;
+}
+#helpBalloon.visible { display:block; opacity:1; }
+#helpBalloon.fadeIn { animation: fadeIn 0.5s ease forwards; }
+@keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
